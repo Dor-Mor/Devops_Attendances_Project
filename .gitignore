@@ -1,4 +1,3 @@
-#ignore unnecessary fils:
 .idea
 .env
 /name.__pycache__
