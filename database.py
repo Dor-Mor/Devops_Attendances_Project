@@ -3,26 +3,22 @@ import os
 import mysql.connector
 from dotenv import load_dotenv
 import pandas as pd
-import attendance
-
 load_dotenv()
 
-myConnection = mysql.connector.connect(host=os.getenv('HOST_NAME'), user=os.getenv("USER_NAME_DB"),
-                                       passwd=os.getenv("PASSWORD_DB"), db=os.getenv("DATABASE"))
+myConnection = mysql.connector.connect(host="db",port="3306", user=os.getenv("USER_NAME_DB"),
+                                       password=os.getenv("PASSWORD_DB"), database=os.getenv("DATABASE"))
 
 cur = myConnection.cursor()
 
 
 def add_new_table():
-    # running attendance function
-    attendance.fix_csv()
     # delete table if exists
     cur.execute("DROP TABLE IF EXISTS all_meetings")
     # creating table - 'all_meetings'
-    cur.execute("CREATE TABLE all_meetings("
-                "Name varchar(255),"
-                "mins varchar(255),"
-                "percentage varchar(255))")
+    cur.execute(""" CREATE TABLE all_meetings(
+                Name varchar(255),
+                mins varchar(255),
+                percentage varchar(255)) """)
     #           "PRIMARY KEY(Name))")
 
     # Import the CSV File into the DataFrame
