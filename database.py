@@ -5,13 +5,13 @@ from dotenv import load_dotenv
 import pandas as pd
 load_dotenv()
 
-myConnection = mysql.connector.connect(host="db",port="3306", user=os.getenv("USER_NAME_DB"),
-                                       password=os.getenv("PASSWORD_DB"), database=os.getenv("DATABASE"))
-
-cur = myConnection.cursor()
-
 
 def add_new_table():
+    myConnection = mysql.connector.connect(host="db",port="3306", user=os.getenv("USER_NAME_DB"),
+                                       password=os.getenv("PASSWORD_DB"), database=os.getenv("DATABASE"))
+
+    cur = myConnection.cursor()
+
     # delete table if exists
     cur.execute("DROP TABLE IF EXISTS all_meetings")
     # creating table - 'all_meetings'
@@ -48,6 +48,9 @@ def add_new_table():
 
 
 def return_all_table():
+    myConnection = mysql.connector.connect(host="db",port="3306", user=os.getenv("USER_NAME_DB"),
+                                       password=os.getenv("PASSWORD_DB"), database=os.getenv("DATABASE"))
+
+    cur = myConnection.cursor()
     cur.execute("SELECT * FROM all_meetings")
-    mysql.connection.commit()
     return cur.fetchall()
