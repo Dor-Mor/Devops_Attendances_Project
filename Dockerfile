@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD /bin/sh -c "sleep 10s; python3 ./app.py"
+CMD sh -c "sleep 10s; python3 ./app.py"

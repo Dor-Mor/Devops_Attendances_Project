@@ -1,0 +1,5 @@
+Flask==2.0.1
+mysql-connector-python==8.0.30
+pandas==1.5.1
+python-dotenv==0.21.0
+paramiko==2.11.0
