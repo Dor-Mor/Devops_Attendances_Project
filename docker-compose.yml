@@ -10,9 +10,7 @@ services:
     volumes:
       - mydb:/var/lib/mysql
   flask:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: dormor5/devops_project:latest
     container_name: flask-app
     ports:
       - "5000:5000"
